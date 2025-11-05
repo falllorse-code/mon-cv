@@ -17,10 +17,10 @@ body{
     position:relative;
     width:100%;
     max-width: 1000px;
-    min-height: 1000px;
+    min-height: auto;
     background: white;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr;
     box-shadow: 0 35px 55px rgb(0, 0, 0);
 
 }
@@ -45,8 +45,8 @@ body{
 
 .profileTexte .imgBox{
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: clamp(110px, 22vw, 200px);
+    height: clamp(110px, 22vw, 200px);
     border-radius: 50%;
     overflow:hidden ;
 }
@@ -168,19 +168,20 @@ p{
 }
 .me .bx{
     display: flex;
-    flex-direction: row;
+    flex-direction: column; 
+    gap: 12px;
     margin: 20px 0;
-    justify-content: space-between;
-    align-items: flex-start;  
+    justify-content: flex-start;
+    align-items: stretch;  
 }
 .me .bx .text {
-  width: 50%;       
+  width: 100%;       
 }
 
 
 .me .bx .year{
-    min-width: 200px;
-    width: 45%
+    min-width: 0;
+    width: 100%;
 }
 .me .bx .year h5{
     text-transform: uppercase;
@@ -196,11 +197,43 @@ p{
   font-weight: 500;
   margin: 3px 0; 
 }
+
+@media (min-width: 768px) {
+    .container{
+        grid-template-columns: 1fr 2fr;
+    }
+    .container .left-side{
+        padding: 40px;
+    }
+    .me .bx{
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .me .bx .text {
+        width: 50%;
+    }
+    .me .bx .year{
+        min-width: 200px;
+        width: 45%;
+    }
+    .skills .bx{
+        grid-template-columns: 150px 1fr;
+    }
+    .interet ul{
+        grid-template-columns: repeat(4,1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .container{
+        max-width: 1100px;
+    }
+}
 .skills .bx{
     position: relative;
     width: 100%;
     display: grid;
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 1fr;
     justify-content: center;
     align-items: center;
 }
@@ -228,7 +261,8 @@ p{
 
 .interet ul {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(2,1fr);
+    gap: 8px;
 }
 
 .interet ul li{
